@@ -1,0 +1,7 @@
+<launch>
+    <arg name="vocabulary_arg" default="$(find vocabulary)/voc/ORBvoc.txt"/>
+    <arg name="settings_arg" default="$(find settings)/mono/EuRoC.yaml"/>
+    <param name="vocabulary_path" value="$(arg vocabulary_arg)"/>
+    <param name="settings_path" value="$(arg settings_arg)"/>
+    <node name="orb_slam2_mono" pkg="orb_slam2" type="orb_slam2_mono_node" output="screen" required="true"/>
+</launch>

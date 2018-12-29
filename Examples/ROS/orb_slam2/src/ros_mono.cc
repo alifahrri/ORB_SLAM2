@@ -45,23 +45,35 @@ public:
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "Mono");
-    ros::start();
+    // ros::init(argc, argv, "Mono");
+    // ros::start();
 
-    if(argc != 3)
-    {
-        cerr << endl << "Usage: rosrun ORB_SLAM2 Mono path_to_vocabulary path_to_settings" << endl;        
-        ros::shutdown();
-        return 1;
-    }    
+    // if(argc != 3)
+    // {
+    //     cerr << endl << "Usage: rosrun ORB_SLAM2 Mono path_to_vocabulary path_to_settings" << endl;        
+    //     ros::shutdown();
+    //     return 1;
+    // }    
+
+    ros::init(argc, argv, "ORB_SLAM2_Monocular");
+    ros::NodeHandle nh;
+
+    std::string vocabulary_path;
+    std::string settings_path;
+    if(!nh.getParam("vocabulary_path",vocabulary_path)) {
+        ROS_ERROR("vocabulary_path param not set, exiting");
+        return -1;
+    }
+    if(!nh.getParam("settings_path",settings_path)) {
+        ROS_ERROR("settings_path param not set, exiting");
+        return -1;
+    }
 
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
-    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
+    ORB_SLAM2::System SLAM(vocabulary_path,settings_path,ORB_SLAM2::System::MONOCULAR,true);
 
     ImageGrabber igb(&SLAM);
-
-    ros::NodeHandle nodeHandler;
-    ros::Subscriber sub = nodeHandler.subscribe("/camera/image_raw", 1, &ImageGrabber::GrabImage,&igb);
+    ros::Subscriber sub = nh.subscribe("/camera/image_raw", 1, &ImageGrabber::GrabImage,&igb);
 
     ros::spin();
 

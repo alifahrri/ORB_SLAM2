@@ -19,7 +19,7 @@ cd ../../../
 
 echo "Uncompress vocabulary ..."
 
-cd Vocabulary
+cd vocabulary/voc
 tar -xf ORBvoc.txt.tar.gz
 cd ..
 

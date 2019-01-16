@@ -1,3 +1,14 @@
+## This fork includes the following changes :
+- add header for `usleep` 
+- support for ros kinetic  
+- richer visualization on RViz (you could still use pangolin though)
+- publish `tf` of current frame
+
+![demo](orbslam_kitti_stereo_rviz.gif)
+
+### usage :
+you could use this project as normal ros package, i.e. `catkin_make` will automatically calls the original build script. 
+
 # ORB-SLAM2
 **Authors:** [Raul Mur-Artal](http://webdiis.unizar.es/~raulmur/), [Juan D. Tardos](http://webdiis.unizar.es/~jdtardos/), [J. M. M. Montiel](http://webdiis.unizar.es/~josemari/) and [Dorian Galvez-Lopez](http://doriangalvez.com/) ([DBoW2](https://github.com/dorian3d/DBoW2))
 

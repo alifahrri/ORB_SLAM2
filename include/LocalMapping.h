@@ -69,7 +69,8 @@ public:
 
     int KeyframesInQueue(){
         unique_lock<std::mutex> lock(mMutexNewKFs);
-        return mlNewKeyFrames.size();
+        // return mlNewKeyFrames.size();
+        return mlNewKeyFrames->size();
     }
 
 protected:
@@ -104,7 +105,8 @@ protected:
     LoopClosing* mpLoopCloser;
     Tracking* mpTracker;
 
-    std::list<KeyFrame*> mlNewKeyFrames;
+    // std::list<KeyFrame*> mlNewKeyFrames;
+    std::list<KeyFrame*> *mlNewKeyFrames;
 
     KeyFrame* mpCurrentKeyFrame;
 

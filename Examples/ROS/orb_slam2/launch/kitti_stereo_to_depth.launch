@@ -1,0 +1,40 @@
+<launch>
+  <!-- run stereo image processing node for kitti -->
+  <!-- ========================================== -->
+  <!-- Argument for device id -->
+  <arg 
+    name="left"
+    default="kitti/camera_color_left"
+  />
+  <arg 
+    name="right"
+    default="kitti/camera_color_right"
+  />
+	<arg
+		name="_approximate_sync"
+		default="true"
+	/>
+	
+	<param name="camera_info_url" value="$(find settings)/stereo/KITTI00-02.yaml"/>
+
+	<remap from="/$(arg left)/image_raw" to="/kitti/left/image_raw" />
+	<remap from="/$(arg left)/camera_info" to="/kitti/left/camera_info" />
+	<remap from="/$(arg right)/image_raw" to="/kitti/right/image_raw" />
+	<remap from="/$(arg right)/camera_info" to="kitti/right/camera_info" />
+
+  <node
+    ns="kitti"
+    pkg="stereo_image_proc"
+    type="stereo_image_proc"
+    name="stereo_image_proc" 
+		args="_approximate_sync:=$(arg _approximate_sync)"
+		output="screen">
+  </node>
+	
+	<node
+		name="disparity_view"
+		pkg="image_view"
+		type="disparity_view"
+		args="image:=/kitti/disparity"
+	/>
+</launch>

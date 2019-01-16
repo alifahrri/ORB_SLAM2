@@ -53,13 +53,18 @@
   <buildtool_depend>sensor_msgs</buildtool_depend>
   <buildtool_depend>message_filters</buildtool_depend>
   <build_depend>roscpp</build_depend>
+  <build_depend>tf2</build_depend>
+  <build_depend>tf2_ros</build_depend>
+  <build_depend>tf2_geometry_msgs</build_depend>
   <build_depend>cv_bridge</build_depend>
   <build_depend>sensor_msgs</build_depend>
   <build_depend>message_filters</build_depend>
+  <build_depend>visualization_msgs</build_depend>
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>cv_bridge</build_export_depend>
   <build_export_depend>sensor_msgs</build_export_depend>
   <build_export_depend>message_filters</build_export_depend>
+  <build_export_depend>visualization_msgs</build_export_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>cv_bridge</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>

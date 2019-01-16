@@ -1,0 +1,737 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 0
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /Status1
+        - /Grid1
+        - /MarkerArray1
+        - /MarkerArray1/Namespaces1
+        - /Image1
+        - /Image2
+        - /PointCloud21
+        - /PointCloud22
+        - /Image3
+        - /Image4
+      Splitter Ratio: 0.395752907
+    Tree Height: 393
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /2D Pose Estimate1
+      - /2D Nav Goal1
+      - /Publish Point1
+    Name: Tool Properties
+    Splitter Ratio: 0.588679016
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+      - /XYOrbit1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Experimental: false
+    Name: Time
+    SyncMode: 0
+    SyncSource: Image
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.0299999993
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /orbslam_viz
+      Name: MarkerArray
+      Namespaces:
+        map_points: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /kitti/left/image_raw
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /kitti/right/image_raw
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Flat Squares
+      Topic: /kitti/points2
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Flat Squares
+      Topic: /kitti/velo/pointcloud
+      Unreliable: true
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /orb_slam2/current_frame
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+    - Class: rviz/Image
+      Enabled: false
+      Image Topic: /kitti/left/image_color
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: false
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        base_link:
+          Value: true
+        camera_color_left:
+          Value: true
+        camera_color_right:
+          Value: true
+        camera_gray_left:
+          Value: true
+        camera_gray_right:
+          Value: true
+        current_frame:
+          Value: true
+        imu_link:
+          Value: true
+        key_frame_tf:
+          Value: true
+        kf_0:
+          Value: true
+        kf_1:
+          Value: true
+        kf_10:
+          Value: true
+        kf_100:
+          Value: true
+        kf_11:
+          Value: true
+        kf_12:
+          Value: true
+        kf_13:
+          Value: true
+        kf_14:
+          Value: true
+        kf_15:
+          Value: true
+        kf_16:
+          Value: true
+        kf_17:
+          Value: true
+        kf_18:
+          Value: true
+        kf_19:
+          Value: true
+        kf_2:
+          Value: true
+        kf_20:
+          Value: true
+        kf_21:
+          Value: true
+        kf_22:
+          Value: true
+        kf_23:
+          Value: true
+        kf_24:
+          Value: true
+        kf_25:
+          Value: true
+        kf_26:
+          Value: true
+        kf_27:
+          Value: true
+        kf_28:
+          Value: true
+        kf_29:
+          Value: true
+        kf_3:
+          Value: true
+        kf_30:
+          Value: true
+        kf_31:
+          Value: true
+        kf_32:
+          Value: true
+        kf_33:
+          Value: true
+        kf_34:
+          Value: true
+        kf_35:
+          Value: true
+        kf_36:
+          Value: true
+        kf_37:
+          Value: true
+        kf_38:
+          Value: true
+        kf_39:
+          Value: true
+        kf_4:
+          Value: true
+        kf_40:
+          Value: true
+        kf_41:
+          Value: true
+        kf_42:
+          Value: true
+        kf_43:
+          Value: true
+        kf_44:
+          Value: true
+        kf_45:
+          Value: true
+        kf_46:
+          Value: true
+        kf_47:
+          Value: true
+        kf_48:
+          Value: true
+        kf_49:
+          Value: true
+        kf_5:
+          Value: true
+        kf_50:
+          Value: true
+        kf_51:
+          Value: true
+        kf_52:
+          Value: true
+        kf_53:
+          Value: true
+        kf_54:
+          Value: true
+        kf_55:
+          Value: true
+        kf_56:
+          Value: true
+        kf_57:
+          Value: true
+        kf_58:
+          Value: true
+        kf_59:
+          Value: true
+        kf_6:
+          Value: true
+        kf_60:
+          Value: true
+        kf_61:
+          Value: true
+        kf_62:
+          Value: true
+        kf_63:
+          Value: true
+        kf_64:
+          Value: true
+        kf_65:
+          Value: true
+        kf_66:
+          Value: true
+        kf_67:
+          Value: true
+        kf_68:
+          Value: true
+        kf_69:
+          Value: true
+        kf_7:
+          Value: true
+        kf_70:
+          Value: true
+        kf_71:
+          Value: true
+        kf_72:
+          Value: true
+        kf_73:
+          Value: true
+        kf_74:
+          Value: true
+        kf_75:
+          Value: true
+        kf_76:
+          Value: true
+        kf_77:
+          Value: true
+        kf_78:
+          Value: true
+        kf_79:
+          Value: true
+        kf_8:
+          Value: true
+        kf_80:
+          Value: true
+        kf_81:
+          Value: true
+        kf_82:
+          Value: true
+        kf_83:
+          Value: true
+        kf_84:
+          Value: true
+        kf_85:
+          Value: true
+        kf_86:
+          Value: true
+        kf_87:
+          Value: true
+        kf_88:
+          Value: true
+        kf_89:
+          Value: true
+        kf_9:
+          Value: true
+        kf_90:
+          Value: true
+        kf_91:
+          Value: true
+        kf_92:
+          Value: true
+        kf_93:
+          Value: true
+        kf_94:
+          Value: true
+        kf_95:
+          Value: true
+        kf_96:
+          Value: true
+        kf_97:
+          Value: true
+        kf_98:
+          Value: true
+        kf_99:
+          Value: true
+        kitti_base_link:
+          Value: true
+        velo_link:
+          Value: true
+        world:
+          Value: true
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        world:
+          key_frame_tf:
+            current_frame:
+              base_link:
+                imu_link:
+                  camera_color_left:
+                    {}
+                  camera_color_right:
+                    {}
+                  camera_gray_left:
+                    {}
+                  camera_gray_right:
+                    {}
+                  velo_link:
+                    {}
+            kf_0:
+              {}
+            kf_1:
+              {}
+            kf_10:
+              {}
+            kf_100:
+              {}
+            kf_11:
+              {}
+            kf_12:
+              {}
+            kf_13:
+              {}
+            kf_14:
+              {}
+            kf_15:
+              {}
+            kf_16:
+              {}
+            kf_17:
+              {}
+            kf_18:
+              {}
+            kf_19:
+              {}
+            kf_2:
+              {}
+            kf_20:
+              {}
+            kf_21:
+              {}
+            kf_22:
+              {}
+            kf_23:
+              {}
+            kf_24:
+              {}
+            kf_25:
+              {}
+            kf_26:
+              {}
+            kf_27:
+              {}
+            kf_28:
+              {}
+            kf_29:
+              {}
+            kf_3:
+              {}
+            kf_30:
+              {}
+            kf_31:
+              {}
+            kf_32:
+              {}
+            kf_33:
+              {}
+            kf_34:
+              {}
+            kf_35:
+              {}
+            kf_36:
+              {}
+            kf_37:
+              {}
+            kf_38:
+              {}
+            kf_39:
+              {}
+            kf_4:
+              {}
+            kf_40:
+              {}
+            kf_41:
+              {}
+            kf_42:
+              {}
+            kf_43:
+              {}
+            kf_44:
+              {}
+            kf_45:
+              {}
+            kf_46:
+              {}
+            kf_47:
+              {}
+            kf_48:
+              {}
+            kf_49:
+              {}
+            kf_5:
+              {}
+            kf_50:
+              {}
+            kf_51:
+              {}
+            kf_52:
+              {}
+            kf_53:
+              {}
+            kf_54:
+              {}
+            kf_55:
+              {}
+            kf_56:
+              {}
+            kf_57:
+              {}
+            kf_58:
+              {}
+            kf_59:
+              {}
+            kf_6:
+              {}
+            kf_60:
+              {}
+            kf_61:
+              {}
+            kf_62:
+              {}
+            kf_63:
+              {}
+            kf_64:
+              {}
+            kf_65:
+              {}
+            kf_66:
+              {}
+            kf_67:
+              {}
+            kf_68:
+              {}
+            kf_69:
+              {}
+            kf_7:
+              {}
+            kf_70:
+              {}
+            kf_71:
+              {}
+            kf_72:
+              {}
+            kf_73:
+              {}
+            kf_74:
+              {}
+            kf_75:
+              {}
+            kf_76:
+              {}
+            kf_77:
+              {}
+            kf_78:
+              {}
+            kf_79:
+              {}
+            kf_8:
+              {}
+            kf_80:
+              {}
+            kf_81:
+              {}
+            kf_82:
+              {}
+            kf_83:
+              {}
+            kf_84:
+              {}
+            kf_85:
+              {}
+            kf_86:
+              {}
+            kf_87:
+              {}
+            kf_88:
+              {}
+            kf_89:
+              {}
+            kf_9:
+              {}
+            kf_90:
+              {}
+            kf_91:
+              {}
+            kf_92:
+              {}
+            kf_93:
+              {}
+            kf_94:
+              {}
+            kf_95:
+              {}
+            kf_96:
+              {}
+            kf_97:
+              {}
+            kf_98:
+              {}
+            kf_99:
+              {}
+          kitti_base_link:
+            {}
+      Update Interval: 0
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Default Light: true
+    Fixed Frame: world
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+    - Class: rviz/SetInitialPose
+      Topic: /initialpose
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+  Value: true
+  Views:
+    Current:
+      Class: rviz/ThirdPersonFollower
+      Distance: 11.4267559
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.0599999987
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Focal Shape Fixed Size: false
+      Focal Shape Size: 0.0500000007
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.00999999978
+      Pitch: 0.250202596
+      Target Frame: base_link
+      Value: ThirdPersonFollower (rviz)
+      Yaw: 3.2853899
+    Saved:
+      - Class: rviz/XYOrbit
+        Distance: 16.5376282
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.0599999987
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Focal Point:
+          X: -2.98023224e-08
+          Y: -1.90734863e-06
+          Z: 0
+        Focal Shape Fixed Size: true
+        Focal Shape Size: 0.0500000007
+        Invert Z Axis: false
+        Name: XYOrbit
+        Near Clip Distance: 0.00999999978
+        Pitch: 0.415202439
+        Target Frame: world
+        Value: XYOrbit (rviz)
+        Yaw: 1.55359101
+      - Class: rviz/XYOrbit
+        Distance: 16.5376282
+        Enable Stereo Rendering:
+          Stereo Eye Separation: 0.0599999987
+          Stereo Focal Distance: 1
+          Swap Stereo Eyes: false
+          Value: false
+        Focal Point:
+          X: -0.886058331
+          Y: -0.59512043
+          Z: -1.90734863e-06
+        Focal Shape Fixed Size: true
+        Focal Shape Size: 0.0500000007
+        Invert Z Axis: false
+        Name: XYOrbit
+        Near Clip Distance: 0.00999999978
+        Pitch: 0.415202439
+        Target Frame: world
+        Value: XYOrbit (rviz)
+        Yaw: 1.55359101
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 744
+  Hide Left Dock: false
+  Hide Right Dock: false
+  Image:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a000001cafc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c00610079007301000000bc000001ca000000d700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c000002610000000100000110000001cafc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a0056006900650077007301000000bc000001ca000000ad00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000556000000b6fc0100000007fb0000000a0049006d0061006700650100000000000001df0000005c00fffffffb0000000a0049006d00610067006501000001e5000001c90000005c00fffffffb0000000a0049006d00610067006501000003b4000001a20000005c00fffffffb0000000a0049006d00610067006500000001f8000001a00000005c00fffffffb0000000a0049006d00610067006500000002080000034e0000000000000000fb0000000a0049006d00610067006500000002ce000002880000000000000000fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000005560000003efc0100000002fb0000000800540069006d00650100000000000005560000030000fffffffb0000000800540069006d00650100000000000004500000000000000000000002d0000001ca00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730000000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: false
+  Width: 1366
+  X: 0
+  Y: 24

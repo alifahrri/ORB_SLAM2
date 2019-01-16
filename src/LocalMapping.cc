@@ -35,7 +35,9 @@ namespace ORB_SLAM2
 LocalMapping::LocalMapping(Map *pMap, const float bMonocular):
     mbMonocular(bMonocular), mbResetRequested(false), mbFinishRequested(false), mbFinished(true), mpMap(pMap),
     mbAbortBA(false), mbStopped(false), mbStopRequested(false), mbNotStop(false), mbAcceptKeyFrames(true)
+  , mlNewKeyFrames(new std::list<KeyFrame*>())
 {
+  // mlNewKeyFrames.size();
 }
 
 void LocalMapping::SetLoopCloser(LoopClosing* pLoopCloser)
@@ -117,24 +119,31 @@ void LocalMapping::Run()
 
 void LocalMapping::InsertKeyFrame(KeyFrame *pKF)
 {
-    unique_lock<mutex> lock(mMutexNewKFs);
-    mlNewKeyFrames.push_back(pKF);
+    // unique_lock<mutex> lock(mMutexNewKFs);
+    // lock_guard<mutex> lock(mMutexNewKFs);
+    // mMutexNewKFs.lock();
+    // mlNewKeyFrames.push_back(pKF);
+    mlNewKeyFrames->push_back(pKF);
     mbAbortBA=true;
+    // mMutexNewKFs.unlock();
 }
 
 
 bool LocalMapping::CheckNewKeyFrames()
 {
     unique_lock<mutex> lock(mMutexNewKFs);
-    return(!mlNewKeyFrames.empty());
+    // return(!mlNewKeyFrames.empty());
+    return(!mlNewKeyFrames->empty());
 }
 
 void LocalMapping::ProcessNewKeyFrame()
 {
     {
         unique_lock<mutex> lock(mMutexNewKFs);
-        mpCurrentKeyFrame = mlNewKeyFrames.front();
-        mlNewKeyFrames.pop_front();
+        // mpCurrentKeyFrame = mlNewKeyFrames.front();
+        // mlNewKeyFrames.pop_front();
+        mpCurrentKeyFrame = mlNewKeyFrames->front();
+        mlNewKeyFrames->pop_front();
     }
 
     // Compute Bags of Words structures
@@ -597,9 +606,12 @@ void LocalMapping::Release()
         return;
     mbStopped = false;
     mbStopRequested = false;
-    for(list<KeyFrame*>::iterator lit = mlNewKeyFrames.begin(), lend=mlNewKeyFrames.end(); lit!=lend; lit++)
+    // for(list<KeyFrame*>::iterator lit = mlNewKeyFrames.begin(), lend=mlNewKeyFrames.end(); lit!=lend; lit++)
+        // delete *lit;
+    // mlNewKeyFrames.clear();
+    for(list<KeyFrame*>::iterator lit = mlNewKeyFrames->begin(), lend=mlNewKeyFrames->end(); lit!=lend; lit++)
         delete *lit;
-    mlNewKeyFrames.clear();
+    mlNewKeyFrames->clear();
 
     cout << "Local Mapping RELEASE" << endl;
 }
@@ -729,7 +741,8 @@ void LocalMapping::ResetIfRequested()
     unique_lock<mutex> lock(mMutexReset);
     if(mbResetRequested)
     {
-        mlNewKeyFrames.clear();
+        // mlNewKeyFrames.clear();
+        mlNewKeyFrames->clear();
         mlpRecentAddedMapPoints.clear();
         mbResetRequested=false;
     }

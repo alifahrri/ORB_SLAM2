@@ -27,6 +27,8 @@ namespace ORB_SLAM2
 
 Map::Map():mnMaxKFid(0),mnBigChangeIdx(0)
 {
+  mspMapPoints.clear();
+  mspKeyFrames.clear();
 }
 
 void Map::AddKeyFrame(KeyFrame *pKF)

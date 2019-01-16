@@ -1,0 +1,21 @@
+<launch>
+  <!-- play bag file from launcher -->
+  <!-- =========================== -->
+  <!--  arguments-->
+  <arg name="file" default="$(env HOME)/data/kitti_2011_09_26_drive_0095_synced.bag"/>
+  <arg name="left_camera" default="/kitti/camera_color_left"/>
+  <arg name="right_camera" default="/kitti/camera_color_right"/>
+	<arg name="rate" default="0.5"/>
+  <!--  Nodes-->
+	<param name="use_sim_time" value="true"/>
+  <node name="kitti_player" pkg="rosbag" type="play" output="screen" args="--clock $(arg file) --pause -r $(arg rate)">
+		<remap from="tf" to="tf_old"/>
+    <remap from="$(arg left_camera)/image_raw" to="/kitti/left/image_raw"/>
+    <remap from="$(arg right_camera)/image_raw" to="/kitti/right/image_raw"/>
+    <remap from="$(arg left_camera)/camera_info" to="/kitti/left/camera_info"/>
+    <remap from="$(arg right_camera)/camera_info" to="/kitti/right/camera_info"/>
+  </node>
+	<node name="tf_remap" pkg="tf" type="tf_remap">
+		<rosparam param="mappings"> [{ old: base_link, new: kitti_base_link }] </rosparam>
+	</node>
+</launch>

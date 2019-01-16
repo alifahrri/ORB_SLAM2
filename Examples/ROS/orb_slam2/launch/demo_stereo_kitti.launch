@@ -1,0 +1,8 @@
+<launch>
+    <!-- run required launchers and nodes for demo -->
+    <!-- ========================================= -->
+    <include file="$(find orb_slam2)/launch/kitti_stereo_core.launch"/>
+    <include file="$(find orb_slam2)/launch/kitti_stereo_bag.launch"/>
+    <include file="$(find orb_slam2)/launch/kitti_stereo_to_depth.launch"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find orb_slam2)/rviz/orbslam.rviz"/>
+</launch>

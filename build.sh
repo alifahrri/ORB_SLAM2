@@ -17,11 +17,14 @@ make -j1
 
 cd ../../../
 
+if [ ! -f vocabulary/voc/ORBvoc.txt ]; then
 echo "Uncompress vocabulary ..."
-
 cd vocabulary/voc
 tar -xf ORBvoc.txt.tar.gz
-cd ..
+cd ../..
+fi
+
+echo "vocabulary uncompressed ..."
 
 echo "Configuring and building ORB_SLAM2 ..."
 

@@ -122,17 +122,7 @@ public:
     std::vector<MapPoint*> GetTrackedMapPoints();
     std::vector<cv::KeyPoint> GetTrackedKeyPointsUn();
 
-private:
-
-    // Input sensor
-    eSensor mSensor;
-
-    // ORB vocabulary used for place recognition and feature matching.
-    ORBVocabulary* mpVocabulary;
-
-    // KeyFrame database for place recognition (relocalization and loop detection).
-    KeyFrameDatabase* mpKeyFrameDatabase;
-
+protected:
     // Map structure that stores the pointers to all KeyFrames and MapPoints.
     Map* mpMap;
 
@@ -148,11 +138,23 @@ private:
     // a pose graph optimization and full bundle adjustment (in a new thread) afterwards.
     LoopClosing* mpLoopCloser;
 
-    // The viewer draws the map and the current camera pose. It uses Pangolin.
-    Viewer* mpViewer;
+    // KeyFrame database for place recognition (relocalization and loop detection).
+    KeyFrameDatabase* mpKeyFrameDatabase;
+
+    // ORB vocabulary used for place recognition and feature matching.
+    ORBVocabulary* mpVocabulary;
+
+    MapDrawer* mpMapDrawer;
 
     FrameDrawer* mpFrameDrawer;
-    MapDrawer* mpMapDrawer;
+
+private:
+
+    // Input sensor
+    eSensor mSensor;
+
+    // The viewer draws the map and the current camera pose. It uses Pangolin.
+    Viewer* mpViewer;
 
     // System threads: Local Mapping, Loop Closing, Viewer.
     // The Tracking thread "lives" in the main execution thread that creates the System object.

@@ -1,0 +1,23 @@
+<launch>
+  <!-- core of kitti stereo node -->
+  <!-- ========================= -->
+  <!--  arguments-->
+  <arg name="settings_arg" default="$(find settings)/stereo/KITTI00-02.yaml"/>
+  <arg name="vocabulary_arg" default="$(find vocabulary)/voc/ORBvoc.txt"/>
+  <arg name="right_camera_arg" default="/kitti/right/image_raw"/>
+  <arg name="left_camera_arg" default="/kitti/left/image_raw"/>
+  <arg name="pangolin_arg" default="false"/>
+  <arg name="rectify_arg" default="false"/>
+  <!--  ROS parameters-->
+  <param name="vocabulary_path" value="$(arg vocabulary_arg)"/>
+  <param name="settings_path" value="$(arg settings_arg)"/>
+  <param name="pangolin" value="$(arg pangolin_arg)"/>
+  <param name="rectify" value="$(arg rectify_arg)"/>
+  <param name="left_camera" value="$(arg left_camera_arg)"/>
+  <param name="right_camera" value="$(arg right_camera_arg)"/>
+  <!--  Nodes-->
+  <!-- for debugging -->
+  <!--   <node name="orb_slam2_stereo" pkg="orb_slam2" type="orb_slam2_stereo_node" output="screen" required="true" launch-prefix="gdb -ex"/>-->
+  <!-- for normal execution -->
+  <node name="orb_slam2_stereo" pkg="orb_slam2" type="orb_slam2_stereo_node" output="screen" required="true"/>
+</launch>

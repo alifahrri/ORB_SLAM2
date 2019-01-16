@@ -2,20 +2,36 @@ cmake_minimum_required(VERSION 2.8.3)
 project(orb_slam2)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++14) 
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -O3 -march=native ")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall  -O3 -march=native")
+
+set(CMD "bash")
+set(ORBSLAM_BUILD_WORK_DIR "${PROJECT_SOURCE_DIR}/../../../")
+set(ORBSLAM_BUILD_SCRIPT "${PROJECT_SOURCE_DIR}/../../../build.sh")
+message(STATUS "${CMD} ${ORBSLAM_BUILD_SCRIPT}")
+execute_process(COMMAND ${CMD} ${ORBSLAM_BUILD_SCRIPT}
+                WORKING_DIRECTORY ${ORBSLAM_BUILD_WORK_DIR}
+                RESULT_VARIABLE ORBSLAM_BUILD_RES
+                OUTPUT_VARIABLE ORBSLAM_BUILD_OUT)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
   cv_bridge
   sensor_msgs
   message_filters
+  image_transport
+  visualization_msgs
 )
+
+find_package(Threads)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -136,27 +152,37 @@ catkin_package(
 # )
 
 include_directories(
-${PROJECT_SOURCE_DIR}
-${PROJECT_SOURCE_DIR}/../../../
-${PROJECT_SOURCE_DIR}/../../../include
-${Pangolin_INCLUDE_DIRS}
+  include
+  include/orb_slam2
+  ${PROJECT_SOURCE_DIR}
+  ${PROJECT_SOURCE_DIR}/../../../
+  ${PROJECT_SOURCE_DIR}/../../../include
+  ${Pangolin_INCLUDE_DIRS}
   ${catkin_INCLUDE_DIRS}
 )
 
 set(LIBS 
-${OpenCV_LIBS} 
-${EIGEN3_LIBS}
-${Pangolin_LIBRARIES}
-${PROJECT_SOURCE_DIR}/../../../Thirdparty/DBoW2/lib/libDBoW2.so
-${PROJECT_SOURCE_DIR}/../../../Thirdparty/g2o/lib/libg2o.so
-${PROJECT_SOURCE_DIR}/../../../lib/libORB_SLAM2.so
+  ${OpenCV_LIBS} 
+  ${EIGEN3_LIBS}
+  ${Pangolin_LIBRARIES}
+  ${PROJECT_SOURCE_DIR}/../../../Thirdparty/DBoW2/lib/libDBoW2.so
+  ${PROJECT_SOURCE_DIR}/../../../Thirdparty/g2o/lib/libg2o.so
+  ${PROJECT_SOURCE_DIR}/../../../lib/libORB_SLAM2.so
 )
 
 
 ## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/orb_slam2.cpp
-# )
+add_library(${PROJECT_NAME}
+  src/${PROJECT_NAME}/tracker.cpp
+  src/${PROJECT_NAME}/slamviz.cpp
+  src/${PROJECT_NAME}/rossystem.cpp
+)
+
+target_link_libraries(${PROJECT_NAME}
+  ${catkin_LIBRARIES}
+  ${LIBS}
+  -lpthread
+)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -184,21 +210,25 @@ add_executable(${PROJECT_NAME}_rgbd_node src/ros_rgbd.cc)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}_mono_node
   ${catkin_LIBRARIES}
+  ${PROJECT_NAME}
   ${LIBS}
 )
 
 target_link_libraries(${PROJECT_NAME}_mono_ar_node
   ${catkin_LIBRARIES}
+  ${PROJECT_NAME}
   ${LIBS}
 )
 
 target_link_libraries(${PROJECT_NAME}_stereo_node
   ${catkin_LIBRARIES}
+  ${PROJECT_NAME}
   ${LIBS}
 )
 
 target_link_libraries(${PROJECT_NAME}_rgbd_node
   ${catkin_LIBRARIES}
+  ${PROJECT_NAME}
   ${LIBS}
 )
 
